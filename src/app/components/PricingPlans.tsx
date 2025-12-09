@@ -57,7 +57,7 @@ export default function PricingPlans({ onSelectPlan, currentPlan = "free" }: Pri
     {
       id: "premium" as const,
       name: "Premium",
-      price: "R$ 59,90",
+      price: "R$ 29,90",
       period: "/mês",
       icon: Sparkles,
       color: "from-purple-500 to-pink-500",
