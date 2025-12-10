@@ -11,6 +11,9 @@ interface PricingPlansProps {
   currentPlan?: "free" | "pro" | "premium";
 }
 
+// Link de pagamento do plano Pro
+const PRO_PAYMENT_LINK = "https://pay.kirvano.com/60a70fd0-4eb2-46ba-bf0d-bbec1be208ee";
+
 export default function PricingPlans({ onSelectPlan, currentPlan = "free" }: PricingPlansProps) {
   const [selectedPlan, setSelectedPlan] = useState<"free" | "pro" | "premium">(currentPlan);
 
@@ -24,7 +27,7 @@ export default function PricingPlans({ onSelectPlan, currentPlan = "free" }: Pri
       color: "from-gray-500 to-gray-600",
       borderColor: "border-gray-300",
       features: [
-        "Até 3 contas por mês",
+        "Até 2 contas por mês",
         "Gráficos básicos de consumo",
         "Quiz de identificação",
         "Análise mensal simples",
@@ -77,7 +80,13 @@ export default function PricingPlans({ onSelectPlan, currentPlan = "free" }: Pri
 
   const handleSelectPlan = (planId: "free" | "pro" | "premium") => {
     setSelectedPlan(planId);
-    onSelectPlan(planId);
+    
+    // Se for o plano Pro, redirecionar para o link de pagamento
+    if (planId === "pro") {
+      window.open(PRO_PAYMENT_LINK, "_blank");
+    } else {
+      onSelectPlan(planId);
+    }
   };
 
   return (
@@ -156,22 +165,22 @@ export default function PricingPlans({ onSelectPlan, currentPlan = "free" }: Pri
                         : "bg-gray-100 hover:bg-gray-200 text-gray-800"
                     }`}
                   >
-                    {isCurrent ? "Plano Atual" : isSelected ? "Selecionado" : "Selecionar Plano"}
+                    {isCurrent ? "Plano Atual" : plan.id === "pro" ? "Assinar Pro" : isSelected ? "Selecionado" : "Selecionar Plano"}
                   </Button>
 
                   {plan.id === "free" && (
                     <p className="text-[10px] sm:text-xs text-center text-gray-500 mt-2">
-                      Perfeito para começar
+                      Perfeito para começar • Limite de 2 contas/mês
                     </p>
                   )}
                   {plan.id === "pro" && (
                     <p className="text-[10px] sm:text-xs text-center text-gray-500 mt-2">
-                      Ideal para controle completo
+                      Ideal para controle completo • Contas ilimitadas
                     </p>
                   )}
                   {plan.id === "premium" && (
                     <p className="text-[10px] sm:text-xs text-center text-gray-500 mt-2">
-                      Máxima eficiência energética
+                      Máxima eficiência energética • Todos os recursos
                     </p>
                   )}
                 </CardContent>
@@ -182,7 +191,10 @@ export default function PricingPlans({ onSelectPlan, currentPlan = "free" }: Pri
 
         <div className="mt-8 sm:mt-12 text-center">
           <p className="text-xs sm:text-sm text-gray-600">
-            Todos os planos incluem acesso ao dashboard básico e suporte por email
+            💳 Todos os planos incluem acesso ao dashboard básico e suporte por email
+          </p>
+          <p className="text-xs sm:text-sm text-gray-500 mt-2">
+            ✓ 7 dias de garantia • ✓ Cancele quando quiser • ✓ Pagamento seguro
           </p>
         </div>
       </div>

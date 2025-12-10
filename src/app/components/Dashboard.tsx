@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown, Zap, DollarSign, Calendar, AlertTriangle, Lightbulb, Crown, Sparkles, Lock } from "lucide-react";
 import { Bill, QuizData, PlanType } from "../page";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import TariffAlert from "./TariffAlert";
 
 interface DashboardProps {
   bills: Bill[];
@@ -129,6 +130,9 @@ export default function Dashboard({ bills, quizData, currentPlan }: DashboardPro
           Plano {currentPlan.charAt(0).toUpperCase() + currentPlan.slice(1)}
         </Badge>
       </div>
+
+      {/* Tariff Alert */}
+      <TariffAlert />
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4">

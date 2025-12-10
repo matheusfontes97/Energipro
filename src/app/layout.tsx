@@ -19,6 +19,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Energipro - Gerencie suas Contas de Energia",
   description: "Gerencie suas contas de energia, calcule médias e previsões de consumo",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "https://k6hrqrxuu8obbfwn.public.blob.vercel-storage.com/temp/8c70773c-0fe5-4c18-a2ab-73052a41a397.jpg",
+    apple: "https://k6hrqrxuu8obbfwn.public.blob.vercel-storage.com/temp/8c70773c-0fe5-4c18-a2ab-73052a41a397.jpg",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Energipro",
+  },
 };
 
 export default function RootLayout({
@@ -30,6 +40,9 @@ export default function RootLayout({
     <html lang="pt-BR">
       <head>
         <Script src="/lasy-bridge.js" strategy="beforeInteractive" />
+        <link rel="icon" href="https://k6hrqrxuu8obbfwn.public.blob.vercel-storage.com/temp/8c70773c-0fe5-4c18-a2ab-73052a41a397.jpg" />
+        <link rel="apple-touch-icon" href="https://k6hrqrxuu8obbfwn.public.blob.vercel-storage.com/temp/8c70773c-0fe5-4c18-a2ab-73052a41a397.jpg" />
+        <meta name="theme-color" content="#3b82f6" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
