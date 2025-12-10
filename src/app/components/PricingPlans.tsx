@@ -13,6 +13,7 @@ interface PricingPlansProps {
 
 // Link de pagamento do plano Pro
 const PRO_PAYMENT_LINK = "https://pay.kirvano.com/60a70fd0-4eb2-46ba-bf0d-bbec1be208ee";
+const PREMIUM_PAYMENT_LINK = "https://pay.kirvano.com/df0165f2-9c97-46ba-bb93-d95ae6e88591";
 
 export default function PricingPlans({ onSelectPlan, currentPlan = "free" }: PricingPlansProps) {
   const [selectedPlan, setSelectedPlan] = useState<"free" | "pro" | "premium">(currentPlan);
